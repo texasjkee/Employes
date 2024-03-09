@@ -26,13 +26,14 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
   plugins: ['react'],
   rules: {
+    // '@typescript-eslint/explicit-function-return-type': 'off',
     'no-unused-vars': 0,
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
     '@typescript-eslint/no-shadow': 0,
     '@typescript-eslint/no-unused-vars': 1,
     '@typescript-eslint/no-non-null-assertion': 0,
-    // '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/triple-slash-reference': 'off',
     'consistent-return': 0,
     'react/function-component-definition': [
       2,
