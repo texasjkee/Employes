@@ -33,7 +33,8 @@ module.exports = {
     '@typescript-eslint/no-shadow': 0,
     '@typescript-eslint/no-unused-vars': 1,
     '@typescript-eslint/no-non-null-assertion': 0,
-    '@typescript-eslint/triple-slash-reference': 'off',
+    '@typescript-eslint/triple-slash-reference': 0,
+    '@typescript-eslint/consistent-type-imports': 0,
     'consistent-return': 0,
     'react/function-component-definition': [
       2,
