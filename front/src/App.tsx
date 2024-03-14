@@ -1,5 +1,23 @@
-const App = () => {
-  return <h1>Employes</h1>
-}
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { Paths } from './paths'
 
-export default App
+import { HomePage, LoginPage, RegisterPage } from './pages'
+
+const router = createBrowserRouter([
+  {
+    path: Paths.home,
+    element: <HomePage />
+  },
+  {
+    path: Paths.login,
+    element: <LoginPage />
+  },
+  {
+    path: Paths.registration,
+    element: <RegisterPage />
+  }
+])
+
+export const App = () => {
+  return <RouterProvider router={router} />
+}
