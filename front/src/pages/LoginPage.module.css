@@ -11,12 +11,18 @@
   border-radius: 5px;
 }
 
-.button_container {
-  display: flex;
-  margin-left: 260px;
-}
-
 .noaccaunt_container {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   padding: 0px 10px;
 }
+
+.noaccaunt_container>p {
+  margin-top: 8px;
+}
+
+/* .button_container {
+  display: flex;
+  margin-left: 260px;
+} */

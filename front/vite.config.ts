@@ -9,7 +9,8 @@ export default defineConfig({
       '@common': '/src/common',
       '@pages': '/src/pages',
       '@utils': '/src/utils',
-      '@services': '/src/services'
+      '@services': '/src/services',
+      '@store': '/src/store'
     }
   }
 })

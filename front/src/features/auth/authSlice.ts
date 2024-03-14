@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { RootState } from '../../store/store'
-import { authApi } from 'services/auth'
-import { User } from '@sevices/'
+import { RootState } from 'store/store'
+import { User } from 'services'
+import { authApi } from '../../services/auth'
 
 interface InitialState {
   user: (User & { token: string }) | null
@@ -13,7 +13,7 @@ const initialState: InitialState = {
   isAuthenticated: false
 }
 
-const userSlice = createSlice({
+const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
@@ -23,6 +23,7 @@ const userSlice = createSlice({
     builder.addMatcher(authApi.endpoints.login.matchFulfilled, (state, action) => {
       state.user = action.payload
       state.isAuthenticated = true
+      console.log(state.user)
     })
     builder.addMatcher(authApi.endpoints.register.matchFulfilled, (state, action) => {
       state.user = action.payload
@@ -35,8 +36,8 @@ const userSlice = createSlice({
   }
 })
 
-export const { logout } = userSlice.actions
-export default userSlice.reducer
+export const { logout } = authSlice.actions
+export default authSlice.reducer
 
 export const selectIsAunthenticated = (state: RootState) => state.auth.isAuthenticated
 

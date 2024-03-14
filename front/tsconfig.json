@@ -24,7 +24,8 @@
       "@common/*": ["./common/*"],
       "@pages/*": ["./pages"],
       "@utils/*": ["./utils"],
-      "@sevices/*": ["./services"]
+      "@sevices/*": ["./services"],
+      "@store/*": ["./store"]
     }
   },
   "include": ["src"],

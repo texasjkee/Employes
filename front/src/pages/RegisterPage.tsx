@@ -34,7 +34,7 @@ export const RegisterPage = () => {
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
         />
         <TextField
-          label='Mail'
+          label='Email'
           variant='outlined'
           value={formData.mail}
           onChange={(e) => setFormData({ ...formData, mail: e.target.value })}

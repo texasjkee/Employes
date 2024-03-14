@@ -1,51 +1,72 @@
-import { Link } from 'react-router-dom'
+import { useState, FormEvent } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { UserData, useLoginMutation } from '../services/auth'
+import { isErrorWithMessage } from '../utils/isErrorWithMessage'
 import { Paths } from '../paths'
 
 import { Typography, TextField, Button } from '@mui/material'
+import { ErrorMessage } from '../components/ErrorMessage'
 import { Layout } from '../components/Layout/Layout'
-import { useState, FormEvent } from 'react'
 
 import style from './LoginPage.module.css'
 
+//TODO: fix this
+type TUserData = Omit<UserData, 'name'>
+
 export const LoginPage = () => {
-  const [formData, setFormData] = useState({
-    mail: '',
+  const navigate = useNavigate()
+  const [formData, setFormData] = useState<TUserData>({
+    email: '',
     password: ''
   })
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [loginUser, loginUserResult] = useLoginMutation()
+
+  const login = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(formData)
-    setFormData({ mail: '', password: '' })
+    const data = formData
+    try {
+      await loginUser(data).unwrap()
+      navigate(Paths.home)
+    } catch (err) {
+      const maybeError = isErrorWithMessage(err)
+      maybeError ? setError(err.data.message) : setError('Unknown error')
+    }
+    // setFormData({ email: '', password: '' })
   }
+
   return (
     <Layout>
-      <form className={style.login_form} onSubmit={handleSubmit}>
+      <form className={style.login_form} onSubmit={login}>
         <Typography variant='h4' component='div' ml={16}>
           Login
         </Typography>
         <TextField
           id='outlined-basic'
-          label='Mail'
+          label='Email'
           variant='outlined'
-          value={formData.mail}
-          onChange={(e) => setFormData({ ...formData, mail: e.target.value })}
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         />
         <TextField
           id='outlined-adornment-password'
+          type='password'
           label='Password'
           variant='outlined'
           value={formData.password}
           onChange={(e) => setFormData({ ...formData, password: e.target.value })}
         />
         <div className={style.noaccaunt_container}>
-          <h4 className=''>
-            No accaunt? <Link to={Paths.registration}>Regestration</Link>{' '}
-          </h4>
-        </div>
-        <div className={style.button_container}>
+          <p>
+            <span>
+              No accaunt? <Link to={Paths.registration}>Regestration</Link>{' '}
+            </span>
+          </p>
           <Button type='submit'>Send</Button>
         </div>
+        <ErrorMessage message={error} />
+        {/* <div className={style.button_container}></div> */}
       </form>
     </Layout>
   )
