@@ -1,0 +1,7 @@
+.main {
+  width: 60%;
+  height: 100%;
+  margin-inline: auto;
+  /* TODO: why is this bad? */
+  /* overflow: hidden; */
+}

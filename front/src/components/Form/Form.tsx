@@ -1,8 +1,7 @@
 import { FormEvent, useState } from 'react'
-import { Button, TextField, Typography } from '@mui/material'
-import { Input, InputPassword } from '../../common'
+import { TextField, Typography } from '@mui/material'
 
-// import { Button } from '../../common/Button/Button'
+import { Button } from '../../common/Button/Button'
 
 import style from './Form.module.css'
 
@@ -37,7 +36,6 @@ export const Form = () => {
         value={formData.firstName}
         onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
       />
-      {/* <Input label='Mail' /> */}
       <TextField
         id='outlined-basic'
         label='Mail'
@@ -52,7 +50,6 @@ export const Form = () => {
         value={formData.password}
         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
       />
-      {/* <InputPassword /> */}
       <div className={style['button-container']}>
         <Button type='submit'>Send</Button>
       </div>

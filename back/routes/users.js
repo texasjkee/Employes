@@ -8,7 +8,7 @@ const {
 const { auth } = require("../middlewate/auth");
 
 router.post("/login", loginController);
-router.post("/register", registerController);
+router.post("/registration", registerController);
 router.get("/current", auth, currentController);
 
 module.exports = router;
