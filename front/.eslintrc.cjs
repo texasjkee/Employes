@@ -26,7 +26,9 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
   plugins: ['react'],
   rules: {
+    // '@typescript-eslint/no-unused-vars': 'off',
     // '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-confusing-void-expression': 'off',
     'no-unused-vars': 0,
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
