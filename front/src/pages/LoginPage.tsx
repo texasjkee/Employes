@@ -21,13 +21,14 @@ export const LoginPage = () => {
   })
   const [error, setError] = useState('')
 
-  const [loginUser, loginUserResult] = useLoginMutation()
+  const [loginUser, { isLoading }] = useLoginMutation()
 
   const login = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const data = formData
     try {
       await loginUser(data).unwrap()
+      console.log(isLoading)
       navigate(Paths.home)
     } catch (err) {
       const maybeError = isErrorWithMessage(err)
