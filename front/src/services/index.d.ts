@@ -7,7 +7,9 @@ export interface User {
 
 export interface Employee {
   id: string
-  email: string
-  password: string
-  name: string
+  firstName: string
+  lastName: string
+  age: string
+  address: string
+  userId: string
 }

@@ -6,11 +6,12 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@common': '/src/common',
-      '@pages': '/src/pages',
-      '@utils': '/src/utils',
-      '@services': '/src/services',
-      '@store': '/src/store'
+      // '@components': '/src/components/'
+      // '@common': '/src/common',
+      // '@pages': '/src/pages',
+      // '@utils': '/src/utils',
+      // '@services': '/src/services/',
+      // '@store': '/src/store'
     }
   }
 })

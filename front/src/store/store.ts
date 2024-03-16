@@ -1,14 +1,16 @@
 import { ThunkAction, Action, configureStore } from '@reduxjs/toolkit'
 import { listenerMiddleware } from '../middleware/authMiddleware'
 import auth from '../features/auth/authSlice'
+import employees from '../features/employees/employeesSlice'
 import { api } from '../services/api'
 
 export const store = configureStore({
   reducer: {
+    [api.reducerPath]: api.reducer,
     auth,
-    [api.reducerPath]: api.reducer
+    employees
   },
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(api.middleware).prepend(listenerMiddleware.middleware)
 })
 

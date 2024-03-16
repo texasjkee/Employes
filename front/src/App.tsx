@@ -1,12 +1,13 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { Paths } from './paths'
 
-import { HomePage, LoginPage, RegisterPage } from './pages'
+import { Auth } from '../src/features/auth/Auth'
+import { AddEmployeePage, Employees, LoginPage, RegisterPage } from './pages'
 
 const router = createBrowserRouter([
   {
     path: Paths.home,
-    element: <HomePage />
+    element: <Employees />
   },
   {
     path: Paths.login,
@@ -15,9 +16,17 @@ const router = createBrowserRouter([
   {
     path: Paths.registration,
     element: <RegisterPage />
+  },
+  {
+    path: Paths.employeeAdd,
+    element: <AddEmployeePage />
   }
 ])
 
 export const App = () => {
-  return <RouterProvider router={router} />
+  return (
+    <Auth>
+      <RouterProvider router={router} />
+    </Auth>
+  )
 }

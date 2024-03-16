@@ -5,7 +5,11 @@
   "semi": false,
   "singleQuote": true,
   "jsxSingleQuote": true,
-  "arrowParens": "always",
-  "max-len": ["error", 100, 2],
+  "arrowParens": "avoid",
+  "max-len": [
+    "error",
+    100,
+    2
+  ],
   "useTabs": false
 }
