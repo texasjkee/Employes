@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { selectUser } from '../../features/auth/authSlice'
-import { Employee } from '../../services'
+import { IEmployee } from '../../services'
 import { useAddEmployeeMutation } from '../../services/employees'
 import { Paths } from '../../paths'
 
@@ -17,16 +17,14 @@ export const AddEmployeePage = () => {
   const [addEmployee] = useAddEmployeeMutation()
 
   useEffect(() => {
-    if (!user) {
-      navigate('/login')
-    }
+    if (!user) navigate('/login')
   }, [navigate, user])
 
-  const handleAddEmployee = async (data: Employee) => {
+  const onAddEmployee = async (data: IEmployee) => {
     try {
       await addEmployee(data).unwrap()
 
-      navigate(`${Paths.status}`)
+      navigate(`${Paths.status}/created`)
     } catch (err) {
       const maybeError = isErrorWithMessage(err)
 
@@ -42,12 +40,7 @@ export const AddEmployeePage = () => {
     <>
       <Header />
       <Layout>
-        <EmployeeForm
-          title='Add employee'
-          btnText='Add'
-          onFinish={handleAddEmployee}
-          error={error}
-        />
+        <EmployeeForm btnText='Add' onAddEmployee={onAddEmployee} error={error} />
       </Layout>
     </>
   )
