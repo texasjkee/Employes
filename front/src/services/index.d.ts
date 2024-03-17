@@ -1,15 +1,16 @@
-export interface User {
+export interface IUser {
   id: string
   email: string
   password: string
   name: string
 }
 
-export interface Employee {
-  id: string
+const date = new Date()
+
+export interface IEmployee {
+  id: date
   firstName: string
   lastName: string
   age: string
   address: string
-  userId: string
 }

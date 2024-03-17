@@ -3,12 +3,13 @@
   width: 400px;
   height: 530px;
   padding: 15px;
+  padding-top: 20px;
   flex-direction: column;
   margin: 0 auto;
   margin-top: 20px;
   justify-content: space-between;
   border: 1px solid #cdcdcd;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .form_header {
@@ -25,5 +26,5 @@
 
 .button_container {
   display: flex;
-  margin-left: 260px;
+  margin-left: 290px;
 }

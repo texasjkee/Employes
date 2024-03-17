@@ -30,7 +30,6 @@ export const LoginPage = () => {
 
     try {
       if (email && password) {
-        console.log(isLoading)
         await loginUser({ email, password, name }).unwrap()
         navigate(Paths.home)
       }
@@ -46,7 +45,7 @@ export const LoginPage = () => {
       <Layout>
         <form className={style.login_form} onSubmit={login}>
           <div className={style.form_header}>
-            <Typography variant='h4' component='div' ml={16}>
+            <Typography variant='h4' component='div' ml={18}>
               Login
             </Typography>
           </div>
@@ -67,12 +66,12 @@ export const LoginPage = () => {
               onChange={e => setFormData({ ...formData, password: e.target.value })}
             />
             <div className={style.noaccaunt_container}>
-              <p>
-                <span>
-                  No accaunt? <Link to={Paths.registration}>Regestration</Link>{' '}
-                </span>
-              </p>
-              <Button type='submit'>Send</Button>
+              <Typography>
+                No accaunt? <Link to={Paths.registration}> Regestration</Link>{' '}
+              </Typography>
+              <Button variant='contained' type='submit'>
+                Send
+              </Button>
             </div>
             <ErrorMessage message={error} />
             {/* <div className={style.button_container}></div> */}

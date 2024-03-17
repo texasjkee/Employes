@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { Employee } from '../../services/'
+import { IEmployee } from '../../services/'
 import { employeesApi } from '../../services/employees'
 import { RootState } from '../../store/store'
 
 interface InitialState {
-  employees: Employee[] | null
+  employees: IEmployee[] | null
 }
 
 const initialState: InitialState = {

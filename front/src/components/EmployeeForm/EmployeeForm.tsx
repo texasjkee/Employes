@@ -1,37 +1,57 @@
-import { FC } from 'react'
-import { Employee } from '../../services'
+import { FC, useState } from 'react'
+import { IEmployee } from '../../services'
 
-import { Button, Card, TextField } from '@mui/material'
+import { Button, TextField } from '@mui/material'
 import { ErrorMessage } from '..'
 
 import style from './EmployeeForm.module.css'
 
 interface EmployeeFormProps<T> {
-  onFinish: (values: T) => void
+  onAddEmployee: (values: T) => void
   btnText: string
-  title: string
   error?: string
   employee?: T
 }
 
-export const EmployeeForm: FC<EmployeeFormProps<Employee>> = ({
-  onFinish,
-  title,
+export const EmployeeForm: FC<EmployeeFormProps<IEmployee>> = ({
+  onAddEmployee,
   btnText,
   error
 }) => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    age: '',
+    address: ''
+  })
+
   return (
     <>
-      <Card title={title} style={{ width: '30rem' }}>
-        <form name='employee-from' onSubmit={onFinish} className={style.employee_form}>
-          <TextField label='First name' variant='outlined' placeholder='First name' />
-          <TextField label='Last name' variant='outlined' placeholder='Last name' />
-          <TextField label='Age' variant='outlined' placeholder='Age' />
-          <TextField label='Address' variant='outlined' placeholder='Address' />
-          <ErrorMessage message={error} />
-          <Button>{btnText}</Button>
-        </form>
-      </Card>
+      <form name='employee-from' className={style.employee_form}>
+        <TextField
+          label='First name'
+          variant='outlined'
+          onChange={e => setFormData({ ...formData, firstName: e.target.value })}
+        />
+        <TextField
+          label='Last name'
+          variant='outlined'
+          onChange={e => setFormData({ ...formData, lastName: e.target.value })}
+        />
+        <TextField
+          label='Age'
+          variant='outlined'
+          onChange={e => setFormData({ ...formData, age: e.target.value })}
+        />
+        <TextField
+          label='Address'
+          variant='outlined'
+          onChange={e => setFormData({ ...formData, address: e.target.value })}
+        />
+        <ErrorMessage message={error} />
+        {/* @ts-ignore */}
+        <Button onClick={() => onAddEmployee(formData)}>{btnText}</Button>
+      </form>
     </>
   )
 }

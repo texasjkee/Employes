@@ -3,16 +3,17 @@ import { useNavigate } from 'react-router-dom'
 import { logout, selectUser } from '../../features/auth/authSlice'
 import { Paths } from '../../paths'
 
-import { Button } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 
 import style from './Header.module.css'
 
 export const Header = () => {
   const navigate = useNavigate()
   const user = useSelector(selectUser)
+  //TODO: why is not useAppdispatch?
   const dispatch = useDispatch()
 
-  const handlerOnLogOut = () => {
+  const onLogout = () => {
     dispatch(logout())
     localStorage.removeItem('token')
     navigate('/login')
@@ -21,22 +22,29 @@ export const Header = () => {
   return (
     <div className={style.header}>
       <div className={style.home}>
-        <h1 onClick={() => navigate(`${Paths.home}`)}>Home</h1>
+        <Typography
+          sx={{ fontFamily: 'Monospace', textTransform: 'uppercase', fontSize: 'h5.fontSize' }}
+          onClick={() => navigate(`${Paths.home}`)}
+        >
+          Home
+        </Typography>
       </div>
       <div className={style.actions}>
         {user ? (
           <>
             <div className={style.hidden}></div>
-            <Button onClick={handlerOnLogOut}>Sign out</Button>
+            <Button onClick={onLogout}>Sign out</Button>
           </>
         ) : (
           <>
-            <div>
-              <h3 className={style.registration} onClick={() => navigate(`${Paths.registration}`)}>
-                Registration
-              </h3>
+            <div className={style.registration}>
+              <div>
+                <Typography onClick={() => navigate(`${Paths.registration}`)}>
+                  Registration
+                </Typography>
+              </div>
             </div>
-            <Button onClick={handlerOnLogOut}>Sign in</Button>
+            <Button onClick={onLogout}>Sign in</Button>
           </>
         )}
       </div>

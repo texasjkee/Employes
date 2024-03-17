@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
-import { RootState } from 'store/store'
+import { RootState } from '../store/store'
 
 const URL = 'http://localhost:8000/api'
 

@@ -11,7 +11,7 @@ const {
 
 router.get("/", getAllEmployeeController);
 router.get("/:id", auth, getEmployeeController);
-router.post("/add", auth, addEmployeeController);
+router.post("/add/:id", auth, addEmployeeController);
 router.delete("/remove/:id", auth, removeEmployeeController);
 router.put("/edit/:id", auth, editEmployeeController);
 

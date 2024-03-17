@@ -28,7 +28,9 @@
 }
 
 .registration {
-  line-height: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   cursor: pointer;
 }
 

@@ -26,6 +26,8 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
   plugins: ['react'],
   rules: {
+    '@typescript-eslint/prefer-ts-expect-error': 0,
+    '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/no-base-to-string': 0,
     '@typescript-eslint/space-before-function-paren': 0,
     '@typescript-eslint/restrict-template-expressions': 0,

@@ -22,7 +22,7 @@ export const AddEmployeePage = () => {
 
   const onAddEmployee = async (data: IEmployee) => {
     try {
-      // await addEmployee(data).unwrap()
+      await addEmployee(data).unwrap()
 
       navigate(`${Paths.status}/created`)
     } catch (err) {

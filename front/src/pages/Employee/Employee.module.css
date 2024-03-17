@@ -1,0 +1,15 @@
+.employee_container {
+  padding: 20px;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #4993db;
+  border-radius: 10px;
+}
+
+.employee_header {
+  margin-bottom: 10px;
+}
+
+.employee_content {
+  margin-bottom: 10px;
+}

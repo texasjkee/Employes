@@ -8,9 +8,9 @@
 
 html,
 body,
-body>div {
+/* body>div {
   height: 100%;
-}
+} */
 
 a {
   color: #141414;

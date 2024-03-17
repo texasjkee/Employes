@@ -59,7 +59,9 @@ export const RegisterPage = () => {
               onChange={e => setFormData({ ...formData, confirmPassword: e.target.value })}
             />
             <div className={style.button_container}>
-              <Button type='submit'>Send</Button>
+              <Button variant='contained' type='submit'>
+                Send
+              </Button>
             </div>
           </div>
         </form>

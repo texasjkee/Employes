@@ -1,8 +1,8 @@
-import { User } from './index'
+import { IUser } from './index'
 import { api } from './api'
 
-export type UserData = Omit<User, 'id'>
-type ResponseLoginData = User & { token: string }
+export type UserData = Omit<IUser, 'id'>
+type ResponseLoginData = IUser & { token: string }
 
 export const authApi = api.injectEndpoints({
   endpoints: builder => ({

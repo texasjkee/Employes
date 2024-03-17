@@ -1,34 +1,34 @@
-import { Employee } from './'
+import { IEmployee } from './'
 import { api } from './api.ts'
 
 export const employeesApi = api.injectEndpoints({
   endpoints: builder => ({
-    getAllEmployees: builder.query<Employee[], void>({
+    getAllEmployees: builder.query<IEmployee[], void>({
       query: () => ({
         url: '/employees',
         method: 'GET'
       })
     }),
-    getEmployee: builder.query<Employee[], string>({
+    getEmployee: builder.query<IEmployee, string>({
       query: id => ({
         url: `/employees/${id}`,
         method: 'GET'
       })
     }),
-    editEmployee: builder.mutation<string, Employee>({
+    editEmployee: builder.mutation<string, IEmployee>({
       query: employee => ({
         url: `/employees/edit/${employee.id}`,
         method: 'PUT'
       })
     }),
-    removeEmployee: builder.mutation<string, Employee>({
+    removeEmployee: builder.mutation<IEmployee, string>({
       query: id => ({
         url: `/employees/remove/${id}`,
         method: 'DELETE',
         body: { id }
       })
     }),
-    addEmployee: builder.mutation<string, Employee>({
+    addEmployee: builder.mutation<string, IEmployee>({
       query: employee => ({
         url: `/employees/add/${employee.id}`,
         method: 'POST',

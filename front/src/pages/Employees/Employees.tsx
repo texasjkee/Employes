@@ -20,7 +20,7 @@ import style from './Employees.module.css'
 export const Employees = () => {
   const navigate = useNavigate()
   const user = useSelector(selectUser)
-  const { data, isLoading } = useGetAllEmployeesQuery()
+  const { data } = useGetAllEmployeesQuery()
 
   useEffect(() => {
     if (!user) {

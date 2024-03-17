@@ -21,6 +21,7 @@ const getAllEmployeeController = async (req, res) => {
  * @access Private
  */
 const addEmployeeController = async (req, res) => {
+  console.log("add");
   try {
     const data = req.body;
     console.log("addEmployeeController ~ data:", data.firstName);
